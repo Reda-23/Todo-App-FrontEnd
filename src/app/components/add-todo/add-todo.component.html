@@ -1,0 +1,18 @@
+<div class="pb-2">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="addTodoForm" (ngSubmit)="handleAddTodo()">
+      <div  class="d-flex flex-row align-items-center">
+         <input type="date" formControlName="dueDate">
+        <input formControlName="title"  type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+               placeholder="Add new...">
+        <i class="fa fa-calendar-times-o my-2 px-1 text-danger btn clear-due-date-button d-none" data-toggle="tooltip" data-placement="bottom" title="Clear Due date"></i>
+        <div>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+

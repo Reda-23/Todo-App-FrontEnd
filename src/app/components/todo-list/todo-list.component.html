@@ -1,0 +1,68 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+          <div class="card-body py-4 px-4 px-md-5">
+
+            <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+              <i class="fa fa-check bg-primary text-white rounded p-2"></i>
+              <u>Gabban Todo-s</u>
+            </p>
+
+            <app-add-todo (todoItem)="$event"></app-add-todo>
+
+            <hr class="my-4">
+
+            <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+              <p class="small mb-0 me-2 text-muted">Filter</p>
+              <select  class="select">
+                <option (click)="allTodos()">All</option>
+                <option  (click)="selectedTodos()" >Completed</option>
+                <option (click)="unselectedTodos()" >Active</option>
+              </select>
+              <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+              <select class="select">
+                <option (click)="allTodos()">All</option>
+                <option (click)="dueDateTodo()" >Due date</option>
+              </select>
+              <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i
+                class="fa fa-sort-amount-down-alt ms-2"></i></a>
+            </div>
+
+
+            <ul *ngFor="let todo of todoList"  class="list-group list-group-horizontal rounded-0 bg-transparent">
+              <li
+                class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                <div  class="form-check">
+                  <input (click)="handleSelect(todo.id,todo)" [checked]="todo.selected"  class="fa fa-square-o text-primary btn m-0 p-0" type="checkbox" value="" id="flexCheckChecked1"
+                         aria-label="..."  />
+                </div>
+              </li>
+
+
+              <li
+                class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                <p class="lead fw-normal mb-0">{{todo.title}}</p>
+              </li>
+              <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+                <div class="d-flex flex-row justify-content-end mb-1">
+                  <a type="button" (click)="deleteTodo(todo.id)" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo">
+                    <i class="fa fa-trash fa-2x"></i>
+                  </a>
+                </div>
+                <div class="text-end text-muted">
+                  <a href="#" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+                    <p class="small mb-0"><i class="fa fa-info-circle me-2"></i>{{todo.dueDate}}</p>
+                  </a>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
